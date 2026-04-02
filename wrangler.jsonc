@@ -1,0 +1,1 @@
+{"name":"sg-data-mcp","main":"src/index.js","compatibility_date":"2025-04-01","compatibility_flags":["nodejs_compat"],"migrations":[{"tag":"v1","new_sqlite_classes":["SGDataMCP"]},{"tag":"v2","deleted_classes":["SGDataMCP"]}]} 
