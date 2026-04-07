@@ -10,7 +10,7 @@ This MCP server gives any AI agent instant access to 13 real-time tools covering
 
 ## Available Tools
 
-### Weather & Environment
+### Weather and Environment
 | Tool | Description | Source |
 |------|-------------|--------|
 | `sg_weather_2h` | 2-hour forecast by area | NEA |
@@ -30,7 +30,7 @@ This MCP server gives any AI agent instant access to 13 real-time tools covering
 ### ACRA Company Intelligence
 | Tool | Description | Source |
 |------|-------------|--------|
-| `sg_company_search` | Search companies by name — returns UEN, type, status, address | ACRA |
+| `sg_company_search` | Search companies by name - returns UEN, type, status, address | ACRA |
 | `sg_company_uen` | Look up company by UEN number | ACRA |
 | `sg_company_verify` | Verify if a company exists and is active | ACRA |
 | `sg_registered_entities_count` | Total count of all ACRA-registered entities | ACRA |
@@ -38,3 +38,61 @@ This MCP server gives any AI agent instant access to 13 real-time tools covering
 ## Quick Start
 
 ### Connect via Streamable HTTP
+
+```
+Endpoint: https://sg-data-mcp.sgdata.workers.dev/mcp
+Method: POST
+Content-Type: application/json
+```
+
+### Use in Claude Desktop
+
+Add to your claude_desktop_config.json:
+
+```json
+{
+  "mcpServers": {
+    "sg-data": {
+      "url": "https://sg-data-mcp.sgdata.workers.dev/mcp"
+    }
+  }
+}
+```
+
+### Example: Search Companies
+
+```bash
+curl https://sg-data-mcp.sgdata.workers.dev/mcp -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"tools/call","id":1,"params":{"name":"sg_company_search","arguments":{"query":"DBS"}}}'
+```
+
+### Example: Check Rainfall
+
+```bash
+curl https://sg-data-mcp.sgdata.workers.dev/mcp -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"tools/call","id":1,"params":{"name":"sg_rainfall","arguments":{}}}'
+```
+
+## Tech Stack
+
+- Runtime: Cloudflare Workers (edge, near-zero cold start)
+- Protocol: MCP over Streamable HTTP (JSON-RPC 2.0)
+- Data: data.gov.sg public APIs and ACRA open datasets
+- Cost: Free tier available
+
+## Roadmap
+
+- Malaysia SSM company registry
+- Indonesia AHU company registry
+- Bus/MRT arrival times (LTA DataMall)
+- URA property transaction data
+- OneMap geocoding
+- API key gating for premium tier
+- Stripe MPP integration for agent-to-agent payments
+
+## Author
+
+Dinesh Kumar - Singapore - hello@levylens.co
+
+## License
+
+MIT
+
