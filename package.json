@@ -1,14 +1,32 @@
 {
   "name": "sg-data-mcp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Real-time Singapore government data and ACRA company intelligence for AI agents via MCP. 13 tools covering weather, environment, transport, dengue clusters, and company verification.",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "singapore",
+    "data-gov-sg",
+    "acra",
+    "weather",
+    "air-quality",
+    "transport",
+    "company-search",
+    "ai-agent",
+    "cloudflare-workers",
+    "asean"
+  ],
+  "author": "Dinesh Kumar <hello@levylens.co>",
+  "license": "MIT",
+  "homepage": "https://github.com/vdineshk/sg-data-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vdineshk/sg-data-mcp.git"
+  },
   "type": "commonjs",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
